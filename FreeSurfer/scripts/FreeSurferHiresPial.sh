@@ -80,9 +80,9 @@ cp --preserve=timestamps $SubjectDIR/$SubjectID/surf/rh.pial $SubjectDIR/$Subjec
 
 
 # Deal with FreeSurfer c_ras offset (might be able to simplify this with FS 6.0)
-MatrixX=`mri_info $mridir/brain.finalsurfs.mgz | grep "c_r" | cut -d "=" -f 5 | sed s/" "/""/g`
-MatrixY=`mri_info $mridir/brain.finalsurfs.mgz | grep "c_a" | cut -d "=" -f 5 | sed s/" "/""/g`
-MatrixZ=`mri_info $mridir/brain.finalsurfs.mgz | grep "c_s" | cut -d "=" -f 5 | sed s/" "/""/g`
+MatrixX=`mri_info $mridir/brain.finalsurfs.mgz | grep "c_r =" | cut -d "=" -f 5 | sed s/" "/""/g`
+MatrixY=`mri_info $mridir/brain.finalsurfs.mgz | grep "c_a =" | cut -d "=" -f 5 | sed s/" "/""/g`
+MatrixZ=`mri_info $mridir/brain.finalsurfs.mgz | grep "c_s =" | cut -d "=" -f 5 | sed s/" "/""/g`
 echo "1 0 0 ""$MatrixX" > $mridir/c_ras.mat
 echo "0 1 0 ""$MatrixY" >> $mridir/c_ras.mat
 echo "0 0 1 ""$MatrixZ" >> $mridir/c_ras.mat
